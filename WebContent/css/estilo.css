@@ -1,0 +1,48 @@
+@font-face {
+    font-family: AgoraSans;
+    src: url('../fonts/PF Agora Sans Pro/PF Agora Sans Pro Regular.ttf');
+}
+@-moz-document url-prefix() {
+  select {
+    padding: 5px;
+  }
+}
+
+body{
+    font-family: AgoraSans;
+}
+#menu{
+    z-index: 99;
+    /*border-bottom: solid 1px rgba(255, 150, 0, .8);*/
+    border: none;
+    border-radius: 0px;
+    background-color: #757575;
+}
+#menu li a{
+    color: #fff;
+}
+#menuLeft{
+    border: none;
+}
+#m1{
+    border-left: solid 1px rgba(255, 255, 255, .5);
+}
+#menuLeft li{
+    border-right: solid 1px rgba(255, 255, 255, .5);
+}
+#menuLeft li:hover{
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.red{
+    color: #f00;
+    font-weight: bold;
+}
+.mini{ font-size: 12px; }
+.seccion1{ min-height: 140px; }
+.icon-z{ margin-right: 60px; } 
+.txt-negrita{ font-weight: bold; }
+.txt-subrayar{ text-decoration: underline; }
+.txt-16{ font-size: 16px; }
+.txt-12{ font-size: 12px; }
+.txt-derecha{ text-align: right; }

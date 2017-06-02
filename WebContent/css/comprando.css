@@ -1,0 +1,130 @@
+/* configuracion para multiselect con ancho relativo al contenedor, evitar desbordamiento de etiqueta de selecionados  */
+.dropdown-menu > .active > a{
+	color:gray!important;
+}
+.dropdown-toggle[aria-expanded="false"] {
+    color: black !important;
+}
+button.multiselect{
+	width: 100%;
+}
+.multiselect-native-select .dropdown-menu{
+	width: 100%;
+	max-height: 400px;
+	overflow-y: auto;
+}
+.multiselect-selected-text{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis ;
+}
+span.multiselect-native-select{
+	width: 90%;
+}
+.multiselect-native-select > .btn-group{
+	width: 100%;
+}
+/* fin */
+.display-flex-end{
+	display: flex;
+	align-items:flex-end;
+	flex-wrap: wrap;
+}
+.flex-width-6{
+	width: 30vmax ;
+}
+.flex-width-2{
+	width: 20vmax ;
+}
+.flex-width-1{
+	width: 6vmax ;
+	padding: 0px 10px
+}
+.flex-width-2,.flex-width-6{
+	min-width: 250px;
+	padding: 0px 10px;
+}
+#tabla-concursos,#cargando-concurso{
+	display:none;
+}
+.date .input-group-addon:hover {
+	background-color: white;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: white;
+    opacity: 1;
+}
+#contenedor-resultados{
+	min-height: 320px;
+	position:relative;
+	overflow-x:auto;
+}
+.cargando{
+	position:absolute;
+	margin:auto;
+	top:0;
+	right: 0;
+	bottom: 0;
+	left:0;
+}
+.text-center{
+	text-align: center;
+}
+.text.right{
+	text-align: right;
+}
+.text-left{
+	text-align: left;
+}
+.cursor{
+	cursor:pointer;
+}
+.table > tbody > tr > td{
+	vertical-align: middle;
+}
+.fondo-emergente{
+	position:fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 100;
+	display: none;
+}
+.contenedor-emergente{
+	position: absolute;
+  	top: 50%; 
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	z-index: 101;
+	background: white;
+	width: 80%;
+	padding: 20px;
+	overflow-y:auto; 
+	border-radius:5px;
+	max-height: 95%;
+}
+#fondo-emergente-cargando > img{
+	position: absolute;
+	margin:auto;
+	top:0;
+	right:0;
+	bottom: 0;
+	left:0;
+}
+.header{
+	background-color: #757575 !important;
+}
+.detalle-concepto{
+	background-color: #eee;
+}
+.detalle-valor{
+	background: white;
+}
+.separador-concurso-detalle{
+	background-color: #757575 !important;
+	height: 5px;
+}
+.separador-concurso-detalle > td{
+	padding: 0px !important;
+}

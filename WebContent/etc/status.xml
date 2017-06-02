@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Estado> 
+	<Activo>true</Activo> 
+	<Titulo>Servicio no disponible</Titulo> 
+	<Mensaje>Sitio Web en proceso de actualización</Mensaje>
+	<Repositorio>http://compras.tlajomulco.gob.mx/documentos/Temp/DOCUMENTOADJUNTOINVITACION/</Repositorio>
+	<Repositorio>http://compras.tlajomulco.gob.mx/documentos/WEBProveedores/</Repositorio>
+</Estado>

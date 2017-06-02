@@ -1,0 +1,198 @@
+/**
+ * EstrucuraRetornoCONCURSOSMODEL_DETAIL.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package org.tempuri;
+
+public class EstrucuraRetornoCONCURSOSMODEL_DETAIL  implements java.io.Serializable {
+    private boolean EXITO;
+
+    private java.lang.String MENSAJE;
+
+    private org.tempuri.CONCURSOSMODEL_DETAIL[] DATOS_CONSULTA;
+
+    public EstrucuraRetornoCONCURSOSMODEL_DETAIL() {
+    }
+
+    public EstrucuraRetornoCONCURSOSMODEL_DETAIL(
+           boolean EXITO,
+           java.lang.String MENSAJE,
+           org.tempuri.CONCURSOSMODEL_DETAIL[] DATOS_CONSULTA) {
+           this.EXITO = EXITO;
+           this.MENSAJE = MENSAJE;
+           this.DATOS_CONSULTA = DATOS_CONSULTA;
+    }
+
+
+    /**
+     * Gets the EXITO value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @return EXITO
+     */
+    public boolean isEXITO() {
+        return EXITO;
+    }
+
+
+    /**
+     * Sets the EXITO value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @param EXITO
+     */
+    public void setEXITO(boolean EXITO) {
+        this.EXITO = EXITO;
+    }
+
+
+    /**
+     * Gets the MENSAJE value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @return MENSAJE
+     */
+    public java.lang.String getMENSAJE() {
+        return MENSAJE;
+    }
+
+
+    /**
+     * Sets the MENSAJE value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @param MENSAJE
+     */
+    public void setMENSAJE(java.lang.String MENSAJE) {
+        this.MENSAJE = MENSAJE;
+    }
+
+
+    /**
+     * Gets the DATOS_CONSULTA value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @return DATOS_CONSULTA
+     */
+    public org.tempuri.CONCURSOSMODEL_DETAIL[] getDATOS_CONSULTA() {
+        return DATOS_CONSULTA;
+    }
+
+
+    /**
+     * Sets the DATOS_CONSULTA value for this EstrucuraRetornoCONCURSOSMODEL_DETAIL.
+     * 
+     * @param DATOS_CONSULTA
+     */
+    public void setDATOS_CONSULTA(org.tempuri.CONCURSOSMODEL_DETAIL[] DATOS_CONSULTA) {
+        this.DATOS_CONSULTA = DATOS_CONSULTA;
+    }
+
+    private java.lang.Object __equalsCalc = null;
+    public synchronized boolean equals(java.lang.Object obj) {
+        if (!(obj instanceof EstrucuraRetornoCONCURSOSMODEL_DETAIL)) return false;
+        EstrucuraRetornoCONCURSOSMODEL_DETAIL other = (EstrucuraRetornoCONCURSOSMODEL_DETAIL) obj;
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (__equalsCalc != null) {
+            return (__equalsCalc == obj);
+        }
+        __equalsCalc = obj;
+        boolean _equals;
+        _equals = true && 
+            this.EXITO == other.isEXITO() &&
+            ((this.MENSAJE==null && other.getMENSAJE()==null) || 
+             (this.MENSAJE!=null &&
+              this.MENSAJE.equals(other.getMENSAJE()))) &&
+            ((this.DATOS_CONSULTA==null && other.getDATOS_CONSULTA()==null) || 
+             (this.DATOS_CONSULTA!=null &&
+              java.util.Arrays.equals(this.DATOS_CONSULTA, other.getDATOS_CONSULTA())));
+        __equalsCalc = null;
+        return _equals;
+    }
+
+    private boolean __hashCodeCalc = false;
+    public synchronized int hashCode() {
+        if (__hashCodeCalc) {
+            return 0;
+        }
+        __hashCodeCalc = true;
+        int _hashCode = 1;
+        _hashCode += (isEXITO() ? Boolean.TRUE : Boolean.FALSE).hashCode();
+        if (getMENSAJE() != null) {
+            _hashCode += getMENSAJE().hashCode();
+        }
+        if (getDATOS_CONSULTA() != null) {
+            for (int i=0;
+                 i<java.lang.reflect.Array.getLength(getDATOS_CONSULTA());
+                 i++) {
+                java.lang.Object obj = java.lang.reflect.Array.get(getDATOS_CONSULTA(), i);
+                if (obj != null &&
+                    !obj.getClass().isArray()) {
+                    _hashCode += obj.hashCode();
+                }
+            }
+        }
+        __hashCodeCalc = false;
+        return _hashCode;
+    }
+
+    // Type metadata
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(EstrucuraRetornoCONCURSOSMODEL_DETAIL.class, true);
+
+    static {
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://tempuri.org/", "estrucuraRetornoCONCURSOSMODEL_DETAIL"));
+        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("EXITO");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://tempuri.org/", "EXITO"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("MENSAJE");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://tempuri.org/", "MENSAJE"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("DATOS_CONSULTA");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://tempuri.org/", "DATOS_CONSULTA"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://tempuri.org/", "CONCURSOSMODEL_DETAIL"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        elemField.setItemQName(new javax.xml.namespace.QName("http://tempuri.org/", "CONCURSOSMODEL_DETAIL"));
+        typeDesc.addFieldDesc(elemField);
+    }
+
+    /**
+     * Return type metadata object
+     */
+    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+        return typeDesc;
+    }
+
+    /**
+     * Get Custom Serializer
+     */
+    public static org.apache.axis.encoding.Serializer getSerializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+    /**
+     * Get Custom Deserializer
+     */
+    public static org.apache.axis.encoding.Deserializer getDeserializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+}

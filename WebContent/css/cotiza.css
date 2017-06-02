@@ -1,0 +1,91 @@
+
+* {
+	font-size: 10px;
+	font-family: Arial,Helvetica,Sans-Serif;
+	margin: 0px;
+}
+
+h1 {
+	font-size: 16px;
+}
+
+@page {
+    size: 8.5in 11in;
+    margin: 0.3in 0.3in 0.3in 0.3in;
+}
+
+/*table {
+	border-collapse: collapse;
+}*/
+
+#fondo {
+	width: 765px;
+	height: 990px;
+	background-image: url("../imagenes/cotizacion.png");
+}
+#titulo {
+    position:absolute;    
+	top: 70px;
+	left: 35px;
+    width: 600px;    
+    /*border: 1px solid rgb(10,100,100);*/
+}
+
+span .titulo {
+    font-weight: bold;
+}
+
+.txt-negrita {
+    font-weight: bold;
+}
+
+.txt-derecha {
+    text-align: right;
+}
+
+.txt-centrar {
+    text-align: center;
+}
+
+#gridTitulo th {
+    text-align: left;
+    width: 18%;
+    vertical-align: middle;
+}
+
+#folio {
+	font-size: 14px;
+}
+
+#impresion {
+	position:absolute;    
+	top: 150px;
+	left: 390px;
+	width: 300px;
+	text-align: right;
+	
+}
+
+#partidas {
+	position:absolute;    
+	top: 235px;
+	left: 35px;
+	width: 690px;	
+}
+
+#gridPartidas {
+	width: 100%;
+	border-collapse: collapse;	
+}
+
+#gridPartidas thead, #gridPartidas tfoot {
+	background-color: gray;
+}
+#gridPartidas th, #gridPartidas td {
+	border: 1px solid white;
+	padding: 5px;	
+}
+
+#gridPartidas .rowmarca {
+	background-color: #f0e0c4;
+}

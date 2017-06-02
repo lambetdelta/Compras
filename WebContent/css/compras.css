@@ -1,0 +1,145 @@
+@CHARSET "UTF-8";
+
+
+@font-face {
+    font-family: AgoraSans;
+    src: url('../fonts/PF Agora Sans Pro/PF Agora Sans Pro Regular.ttf');
+}
+@-moz-document url-prefix() {
+  select {
+    padding: 5px;
+  }
+}
+
+body{
+    font-family: AgoraSans;
+}
+#menu{
+    z-index: 99;
+    /*border-bottom: solid 1px rgba(255, 150, 0, .8);*/
+    border: none;
+    border-radius: 0px;
+    background-color: #757575;
+}
+
+.dropdown-toggle[aria-expanded="false"] {  
+  color:white !important;
+}
+
+.dropdown-toggle[aria-expanded="true"] {
+  background:#555753!important;
+  color:white !important;
+}
+
+.dropdown-menu > .active > a,.dropdown-menu > .active  > .active > a:focus {
+	color: white; 
+	background-color: white!important;
+}
+
+.navbar-nav > li > .dropdown-menu { background-color: #eeeeec; }
+.navbar-nav > li > .dropdown-menu a{ color: black; }
+.navbar-nav > li > .dropdown-menu > a:hover{ background-color: white; }
+	
+
+.red{
+    color: #f00;
+    font-weight: bold;
+}
+.mini{ font-size: 12px; }
+.seccion1{ min-height: 140px; }
+.icon-z{ margin-right: 60px; } 
+.txt-negrita{ font-weight: bold; }
+.txt-subrayar{ text-decoration: underline; }
+.txt-16{ font-size: 16px; }
+.txt-12{ font-size: 12px; }
+.txt-derecha{ text-align: right; }
+
+.img-margen {	
+	margin: 0 2% 2% 0;    
+} 
+
+
+td.agrupador {
+	padding-left: 0;
+}
+
+.table:thead {
+	background-color: #F5F5F5;
+}
+
+.dialog-max {
+	max-width: 400px;	
+} 
+
+#dialog-pass {
+	width: 550px;
+}
+
+#logoGde{
+    background-color: #fff; 
+    height: 150px; width: 350px; 
+    float: right; 
+    position: relative;
+}
+
+#sp1{
+    font-size: 45px; 
+    font-weight: initial; 
+    color: #999; 
+    position: absolute; 
+    left: 5px; top: 60px;
+}
+#sp2{
+    font-size: 42px; 
+    color: #888; 
+    position: absolute; 
+    left: 10px; bottom: 32px;
+}
+#barraN{
+    height: 5px; width: 160px; 
+    background-color: #f0ad4e; 
+    position: absolute; 
+    left: 0px; bottom: 35px;
+}
+
+#logoChi{
+    background-color: #fff; text-align: center;
+}
+
+#spCh1{
+    font-size: 30px;
+    font-weight: initial; 
+    color: #999;  
+    border-bottom: solid 4px #f0ad4e;
+}
+#spCh2{
+    color: #888;
+}
+
+#pnBusqueda {
+	padding-bottom: 15px;
+	background-color: #eee;
+}
+
+/************** AVANCE ***************/
+#progressbox {
+	position: relative;
+	width: 100%;
+	border: 1px solid #ddd;
+	padding: 1px;
+	border-radius: 3px;
+}
+
+#progressbar {
+	background-color: #ff4800;
+	width: 0%;
+	height: 20px;
+	border-radius: 4px;
+}
+
+#percent {
+	position: absolute;
+	display: inline-block;
+	top: 3px;
+	left: 48%;
+}

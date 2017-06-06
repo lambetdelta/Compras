@@ -13,6 +13,10 @@
 	String [] id_rubros =new String[1];
 	if (request.getAttribute("rubros") != null)
 		rubros = (ModelRUBROS[]) request.getAttribute("rubros");
+	Estatus status=new Estatus();
+	if (request.getAttribute("status") != null) {
+		status = (Estatus) request.getAttribute("status"); 	
+	}
 %>
 <html lang="es">
 <head>
@@ -89,6 +93,11 @@
 									<div class="flex-width-1">
 										<button id="solicitar-concursos" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Buscar</button>
 									</div>
+									<div class="flex-width-2" id="alert-rubros">
+										<div class="alert alert-warning" role="alert">
+										  Selecciona al menos un rubro
+										</div>
+									</div>
 							</div>	
 						</form>				
 					</div>					
@@ -136,6 +145,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			Concurso.inicio();
+			Concurso.setUrlConcursos("<%=status.getRespositorioUrl()%>");
 		})
 	</script>
 </body>

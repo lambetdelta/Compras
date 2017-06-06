@@ -56,5 +56,21 @@ var Utilidades={
 	    } else {
 	        return false;
 	    }
-	}
+	},
+	mostrarYDesvanecer:function(id,tiempo){
+		var elemento=document.getElementById(id).style;
+		if(elemento != null){
+			if(typeof  function_ !== 'undefined')
+				clearTimeout(function_);
+			elemento.display = "block";
+			elemento.opacity = 1;
+			(function fade(){
+					if((elemento.opacity-=.1) < 0)  
+						elemento.display="none"; 
+					else
+						function_=setTimeout(fade,tiempo)})();
+		}
+		
+		
+	},
 }

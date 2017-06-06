@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import gob.tlajomulco.ComprasDAO;
+import gob.tlajomulco.config.Constantes;
+import gob.tlajomulco.config.Estatus;
+
 import org.tempuri.CONCURSOSMODEL;
 import com.google.gson.Gson;
 /**
@@ -53,11 +56,12 @@ public class SrvComprandoAjax extends HttpServlet {
 			String [] id_rubros=rubros.split( ",");
 			fecha_publicacion=Utilidades.limpiar(request.getParameter("fecha_publicacion"));
 //			fecha_vencimiento=Utilidades.limpiar(request.getParameter("fecha_vencimiento"));
+			Estatus status = Constantes.getEstatus(Constantes.getURL(request));
 			for (int i = 0; i < id_rubros.length; i++) {
 				concursos=db.getConcurso(id_rubros[i], fecha_publicacion);
 				if(concursos != null)
 					if(concursos.length > 0){
-						concursos=Utilidades.limpiarTotal(concursos);
+						concursos=Utilidades.prepararRespuestaAjax(concursos,status);
 						concursos_lista.add(concursos);
 					}
 			}

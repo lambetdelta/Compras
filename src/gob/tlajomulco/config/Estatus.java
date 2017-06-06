@@ -13,7 +13,8 @@ public class Estatus {
 	private String titulo;
 	private String mensaje;
 	private String repositorio;
-	
+	private String repositorioLicitacionesUrl;
+	private String repositorioLicitacionesPath="dwdewdwedwed";
 	public Estatus() {
 		super();
 		
@@ -21,7 +22,18 @@ public class Estatus {
 		titulo = "NO DISPONIBLE";
 		mensaje = "Temporalmente estamos fuera de servicio, intente mas tarde";
 	}
-
+	public void setRepositorioLicitacionesPath(String path){
+		this.repositorioLicitacionesPath=path;
+	}
+	public String getRepositorioLicitacionesPath(){
+		return this.repositorioLicitacionesPath;
+	}
+	public void setRepositorioLicitacionesUrl(String url){
+		this.repositorioLicitacionesUrl=url;
+	}
+	public String getRespositorioUrl(){
+		return this.repositorioLicitacionesUrl;
+	}
 	public boolean isActivo() {
 		return activo;
 	}
@@ -64,9 +76,11 @@ public class Estatus {
 		// Leemos informacion...
 		boolean act = Boolean.parseBoolean(sts.getChildText("Activo"));
 		setActivo(act);
-		setTitulo(sts.getChildTextTrim("Titulo"));
-		setMensaje(sts.getChildTextTrim("Mensaje"));
-		setRepositorio(sts.getChildTextTrim("Repositorio"));
+		setTitulo(sts.getChildText("Titulo"));
+		setMensaje(sts.getChildText("Mensaje"));
+		setRepositorio(sts.getChildText("Repositorio"));
+		setRepositorioLicitacionesPath(sts.getChildText("RepositorioLicitacionesPath"));
+		setRepositorioLicitacionesUrl(sts.getChildText("RepositorioLicitacionesUrl"));
 	}
 
 	@Override

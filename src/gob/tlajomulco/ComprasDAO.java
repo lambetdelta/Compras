@@ -171,7 +171,6 @@ public class ComprasDAO {
 		
 		return null;
 	}
-	
 	/**
 	 * Obtiene el listado de Items que contiene un concurso
 	 * @param idRequerimiento
@@ -293,10 +292,8 @@ public class ComprasDAO {
 	 */
 	public EstrucuraRetornoUpdate updateCotizacionCabecera(ModelCotizacionCabecera cab) throws RemoteException {
 		ProveedoresSoapProxy ws = new ProveedoresSoapProxy();
-		
 		System.out.println("Compras :: Actualizando Cotización: " + cab.getIdCotizacion());
 		System.out.println(cab);
-		
 		return ws.updateCabezera(cab.getNombreTipoPago(), cab.getIdTipoPago(), cab.getFechaEntrega(), 
 				cab.getIdCotizacion(), cab.getNumeroCotizacion(), cab.getTerminado(), cab.getUsuario(), 
 				cab.getCotizador(), cab.getBoExtencionId(), cab.getObservaciones(), cab.getDisculpa(), 

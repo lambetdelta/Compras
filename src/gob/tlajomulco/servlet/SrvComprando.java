@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.tempuri.ModelRUBROS;
 import gob.tlajomulco.ComprasDAO;
+import gob.tlajomulco.config.Constantes;
+import gob.tlajomulco.config.Estatus;
 
 /**
  * Servlet implementation class SrvComprando
@@ -38,7 +40,8 @@ public class SrvComprando extends HttpServlet {
 		ModelRUBROS[] rubros = null;
 		
 		rubros = db.getRubros();
-		
+		Estatus status = Constantes.getEstatus(Constantes.getURL(req));
+		req.setAttribute("status", status);
 		if (rubros.length > 0)
 			req.setAttribute("rubros", rubros);
 	

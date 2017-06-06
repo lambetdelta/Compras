@@ -35,6 +35,8 @@ public class CONCURSOSMODEL  implements java.io.Serializable {
     private java.lang.String FUNDAMENTOLEGAL;
 
     private java.lang.String TOTAL;
+    
+    private boolean ARCHIVO_DISPONIBLE;
 
     public CONCURSOSMODEL() {
     }
@@ -89,7 +91,10 @@ public class CONCURSOSMODEL  implements java.io.Serializable {
     public void setID(java.lang.String ID) {
         this.ID = ID;
     }
-
+    
+    public void setArchivoDisponible(boolean disponible){
+    	this.ARCHIVO_DISPONIBLE=disponible;
+    }
 
     /**
      * Gets the NUMERODOCUMENTO value for this CONCURSOSMODEL.
@@ -130,7 +135,7 @@ public class CONCURSOSMODEL  implements java.io.Serializable {
         this.REQUERIMIENTO = REQUERIMIENTO;
     }
 
-
+    
     /**
      * Gets the FECHAVIGENCIA value for this CONCURSOSMODEL.
      * 

@@ -4,6 +4,7 @@
 
 var Concurso={
 		arreglo_detalle_concurso:new Array(),
+		url_concursos:null,
 		inicio:function(){
 //			iniciar aspectos visuales y ligar eventos
 			Concurso.inicioMultiselect();
@@ -47,6 +48,9 @@ var Concurso={
 			var obj_publicacion=Concurso.inicioDatepicker($('#fecha-publicacion'),hoy);
 			obj_publicacion.on('dp.change',Concurso.verificarFechaInicio);
 		},
+		setUrlConcursos:function(url){
+			Concurso.url_concursos=url;
+		},
 		obtenerIdRubros:function(multiselect){
 			return Concurso.getAllOptionSeleted($("#rubros"),',');
 		},
@@ -68,12 +72,14 @@ var Concurso={
 					$('#cargando-concurso').hide();
 					$('#tabla-concursos').show();
 				});
-			}
+			}else
+				Utilidades.mostrarYDesvanecer('alert-rubros',400);
 		},
 		solicitarDetalleConcurso:function(){
 //			solicitar con ajax los detalles de un concurso en base al ID del mismo(solo se solicita una vez por concurso)
+			var tag_name=arguments[0].target.tagName;
 			var registro=this.dataset.registro;
-			if(registro != null){
+			if(tag_name != 'IMG' && registro != null){
 				Utilidades.mostrarPopUpCargando();
 				var detail_concurso=Concurso.buscarArrayDetalleConcursoPorIdReferencia(registro);
 				if(detail_concurso === false){
@@ -94,18 +100,20 @@ var Concurso={
 //			generar HTML del detalle de un concurso
 			var length = data.length;
 			var boton = Concurso.plantillaBotonCerrar('fondo-emergente') + '<h2 class="text-center">Detalles</h2>';
-			var html='';
+			var html="";
 			var contenedor=document.getElementById('contenedor-emergente');
+			var encabezado='';
 			if(data.length > 0){
 				for (var i = 0; i < length; i++){
 					if(i == 0)
-						var encabezado = Concurso.plantillaEncabezadoDetallesConcurso(data[i].PROYECTO);
+						encabezado = Concurso.plantillaEncabezadoDetallesConcurso(data[i].PROYECTO);
 					else
 						html += Concurso.plantillaSeparadorDetalleConcurso();
 					html += Concurso.plantillaItemDetalleConcurso(data[i].DESCRIPCION,data[i].PRIORIDAD,
 							data[i].CANTIDAD,data[i].DETALLES,data[i].UNIDAD_MEDIDA);
 				} 
-			}
+			}else
+				html = Concurso.plantillaConcursoSinItem()
 			contenedor.innerHTML = boton + '<table class="table table-striped table-hover text-center">' + encabezado + html + "</table>";
 			Utilidades.ocultarPopUpCargando();
 			Utilidades.mostrarPopUp();
@@ -159,10 +167,18 @@ var Concurso={
     		});
     		return result.join(glue);
         },
-        plantillaConcursoItem:function(id_Concurso,fecha_publicacion,rubro,documento,requerimiento){
-        	return '<tr class="Concurso cursor" data-registro="' + id_Concurso + '"><td>' + requerimiento
-        	+'</td><td>' + fecha_publicacion.slice(0,10) + '</td><td>' + rubro+'</td><td><img src="imagenes/ico/pdf.png" data-url="' + documento
-        	+ '" class="cursor"/></td></tr>';
+        plantillaConcursoItem:function(id_Concurso,fecha_publicacion,rubro,documento,requerimiento,disponibilidad_pdf){
+        	var img_pdf=Concurso.disponibilidadDePDF(disponibilidad_pdf,documento);
+        	return '<tr class="Concurso cursor" data-registro="' + id_Concurso + '"><td>' + requerimiento + 
+        	'</td><td>' + fecha_publicacion.slice(0,10) + '</td><td>' + rubro + 
+        	'</td><td>' + img_pdf + '</td></tr>';
+        },
+        disponibilidadDePDF:function(disponibilidad_pdf,documento){
+        	if(disponibilidad_pdf){
+        		var url_file=Concurso.url_concursos + documento + ".pdf";
+        		return "<a href='" + url_file + "' target='_blank'><img src='imagenes/ico/pdf.png' class='cursor pdf'/></a>";
+        	}else
+        		return "";
         },
         manejarRespuesta:function(data){
 //        	Generar html de los concursos solicitados
@@ -183,7 +199,8 @@ var Concurso={
         	var longitud=datos.length - 1;
         	var items='';
     		for (var i = 0; i <= longitud; i++)
-				items += Concurso.plantillaConcursoItem(datos[i].ID,datos[i].FECHAVIGENCIA,datos[i].NOMBRERUBRO,datos[i].NUMERODOCUMENTO,datos[i].REQUERIMIENTO);
+				items += Concurso.plantillaConcursoItem(datos[i].ID,datos[i].FECHAVIGENCIA,datos[i].NOMBRERUBRO,
+						datos[i].NUMERODOCUMENTO,datos[i].REQUERIMIENTO,datos[i].ARCHIVO_DISPONIBLE);
     		return items;
         },
         isEmptyJSON:function(obj) {
@@ -199,7 +216,7 @@ var Concurso={
         plantillaItemDetalleConcurso:function(descripcion,prioridad,cantidad,detalles,unidad_medida){
     		detalles=(detalles.length > 5) ? detalles : 'Sin detalles'; 
     		cantidad = Utilidades.recortarNumero(cantidad,2);
-        			return '<tr><td class="detalle-concepto">Descripción</td><td class="detalle-valor">' + descripcion + '</td>' +
+    		return '<tr><td class="detalle-concepto">Descripción</td><td class="detalle-valor">' + descripcion + '</td>' +
         			'<tr><td class="detalle-concepto">Cantidad</td><td class="detalle-valor">' + cantidad + ' ' + unidad_medida + '</td></tr>'+
         			'<tr><td class="detalle-concepto">Detalles</td>' +
         			'<td class="detalle-valor">' + detalles + '</td></tr>'+

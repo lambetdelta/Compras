@@ -1,6 +1,7 @@
 package gob.tlajomulco.utiles;
 import java.util.Arrays;
 import org.tempuri.CONCURSOSMODEL;
+import gob.tlajomulco.config.Estatus;
 public class Utilidades {
 
 	public Utilidades(){
@@ -33,12 +34,16 @@ public class Utilidades {
 		}
 		return cadena;
 	}
-	public static CONCURSOSMODEL[] limpiarTotal(CONCURSOSMODEL[] data){
-		int length=data.length;
-		for (int i = 0; i < length; i++) {
-			data[i].setTOTAL("");
-			
-		}
-		return data;
+	public static CONCURSOSMODEL[] prepararRespuestaAjax(CONCURSOSMODEL[] data,Estatus status){
+			int length=data.length;
+			String url;
+			for (int i = 0; i < length; i++) {
+				url=status.getRepositorioLicitacionesPath() + data[i].getNUMERODOCUMENTO() + ".pdf";
+				data[i].setTOTAL(url);
+				if (Formatos.existeArchivo(url)){
+					data[i].setArchivoDisponible(true);
+				}
+			}
+			return data;
 	}
 }

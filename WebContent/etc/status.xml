@@ -3,6 +3,7 @@
 	<Activo>true</Activo> 
 	<Titulo>Servicio no disponible</Titulo> 
 	<Mensaje>Sitio Web en proceso de actualización</Mensaje>
-	<Repositorio>http://compras.tlajomulco.gob.mx/documentos/Temp/DOCUMENTOADJUNTOINVITACION/</Repositorio>
-	<Repositorio>http://compras.tlajomulco.gob.mx/documentos/WEBProveedores/</Repositorio>
+	<Repositorio>https://compras.tlajomulco.gob.mx/documentos/Temp/DOCUMENTOADJUNTOINVITACION/</Repositorio>
+	<RepositorioLicitacionesUrl>https://compras.tlajomulco.gob.mx/documentos/WEBProveedores/</RepositorioLicitacionesUrl>
+	<RepositorioLicitacionesPath>C:\Users\Usuario\workspace\Compras\WebContent\documentos\WebProveedores\</RepositorioLicitacionesPath>
 </Estado>

@@ -45,8 +45,12 @@ span.multiselect-native-select{
 	min-width: 250px;
 	padding: 0px 10px;
 }
-#tabla-concursos,#cargando-concurso{
+#tabla-concursos,#cargando-concurso,#alert-rubros{
 	display:none;
+	contain: paint;
+}
+#tabla-concursos > tbody > tr > td {
+	height: 50px;
 }
 .date .input-group-addon:hover {
 	background-color: white;
@@ -127,4 +131,11 @@ span.multiselect-native-select{
 }
 .separador-concurso-detalle > td{
 	padding: 0px !important;
+}
+.alert{
+	padding:7px;
+	margin:0px;
+}
+.pdf:hover{
+	filter: contrast(50%);
 }

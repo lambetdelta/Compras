@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import gob.tlajomulco.ComprasDAO;
 import gob.tlajomulco.utiles.Utilidades;
 import org.tempuri.CONCURSOSMODEL_DETAIL;
-import com.google.gson.Gson;
 /**
  * Servlet implementation class SrvConcursoDetalleAjax
  */

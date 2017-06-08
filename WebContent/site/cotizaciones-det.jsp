@@ -44,20 +44,6 @@
 		double sumTotal = 0;
 		for (int i = 0; i < det.length; i++) {
 			ModelCotizacionProveedorDETALLE d = det[i];
-			
-/* 			CotizacionDetalleEx dEx = new CotizacionDetalleEx(d.getID_ITEM(), d.getREFERENCIA(), d.getDESCRIPCION(), d.getDETALLES(), d.getPRIORIDAD(),
-					d.getCANTIDAD(), d.getPRECIOREFERENCIA(), d.getFECHAENTREGA_ITEM(), d.getUNIDAD_MEDIDA(), d.getPRECIO_UNITARIO(), d.getBONIFICACION(),
-					d.getIMPORTE_BONIFICACION(), d.getTOTAL(), d.getNETO_TOTAL(), d.getNETO_TOTAL(), d.getPROYECTO_ITEM(), d.getTIPO_GASTO_ITEM(), d.getORIGEN_ITEM(),
-					d.getPARTIDA(), d.getGARANTIA(), d.getDISPONIBLEANT(), d.getDISPONIBLE(), d.getPERMITESALDOROJO(), d.getUSUARIO(), d.getVALIDAANUAL(),
-					d.getMOTIVOPRIORIDAD(), d.getSOLICITUD(), d.getCLAVEPRESUPUESTAL(), d.getVALOR2_NOMBRE(), d.getSUMA2_NOMBRE(), d.getTOTALTR(), 
-					d.getOBSERVACIONES(), d.getIVA(), d.getIVAIE());
-			
-			dEx.setCotId(cotId);
-			dEx.setTerminado(terminado); 
-			Gson gson = new Gson();
-			String data = gson.toJson(dEx);
-			*/
-			
 			String claseRow = "";
 			if (!d.getPRECIO_UNITARIO().equals("0.0000"))
 				claseRow = "success";
@@ -74,7 +60,6 @@
 			sumIva += iva;
 			sumIEPS += ieps;
 			sumTotal += total;
-			//System.out.println(d.getPRECIO_UNITARIO());
 %>
 														<tr id="partida-det-<%=d.getID_ITEM() %>" class="<%=claseRow %>">
         	        										<td class="text-center"><strong><%=d.getREFERENCIA() %></strong></td>

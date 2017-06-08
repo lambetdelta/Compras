@@ -188,20 +188,12 @@ var Concurso={
         	var html="";
         	if(lenght_data >= 0){
         		for (var i = 0; i <= lenght_data; i++) 
-					html += Concurso.crearListaDeItems(data[i]);
+					html += Concurso.plantillaConcursoItem(data[i].ID,data[i].FECHAVIGENCIA,data[i].NOMBRERUBRO,
+							data[i].NUMERODOCUMENTO,data[i].REQUERIMIENTO,data[i].ARCHIVO_DISPONIBLE);
         	}else
         		html = Concurso.sinItems();
         	contenedor.innerHTML=html;
     		
-        },
-        crearListaDeItems:function(datos){
-//        	Generar html un concurso solicitado
-        	var longitud=datos.length - 1;
-        	var items='';
-    		for (var i = 0; i <= longitud; i++)
-				items += Concurso.plantillaConcursoItem(datos[i].ID,datos[i].FECHAVIGENCIA,datos[i].NOMBRERUBRO,
-						datos[i].NUMERODOCUMENTO,datos[i].REQUERIMIENTO,datos[i].ARCHIVO_DISPONIBLE);
-    		return items;
         },
         isEmptyJSON:function(obj) {
     	  for(var i in obj) { return false; }

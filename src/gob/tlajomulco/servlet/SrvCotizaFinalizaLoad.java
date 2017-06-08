@@ -3,21 +3,15 @@ package gob.tlajomulco.servlet;
 import gob.tlajomulco.ComprasDAO;
 import gob.tlajomulco.ModelUsuario;
 import gob.tlajomulco.utiles.Base64Coder;
-import gob.tlajomulco.utiles.FormatosQPS;
-
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.tempuri.ModelCATTIPOPAGO;
 import org.tempuri.ModelCotizacionProveedor;
-
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class SrvCotizaFinalizaLoad
@@ -54,7 +48,7 @@ public class SrvCotizaFinalizaLoad extends HttpServlet {
 		
 		System.out.println("Tipo pago: " + tp);
 		HttpSession sesionOk = req.getSession(false);
-		if (sesionOk != null)		
+		if (sesionOk != null){		
 			if (sesionOk.getAttribute("user") != null) {
 				ModelUsuario user = (ModelUsuario) sesionOk.getAttribute("user");
 				cot = db.getCotizacionProveedor(data, user.getUsuario(), Base64Coder.decode(user.getPassword()));
@@ -64,6 +58,9 @@ public class SrvCotizaFinalizaLoad extends HttpServlet {
 				req.setAttribute("cotizacion", cot);
 				req.setAttribute("tipoPago", tp);
 				req.getRequestDispatcher("site/cotiza-termino.jsp").forward(req, res);
-			}
+			}else
+				res.getWriter().write("dqwwqd");
+		}else
+			res.getWriter().write("ddddd");
 	}
 }

@@ -243,7 +243,7 @@ public class ComprasDAO {
 	public ModelCotizacionProveedorDETALLE[] getCotizacionProveedorDet(String pk) throws RemoteException {
 		ProveedoresSoapProxy ws = new ProveedoresSoapProxy();
 		
-		EstrucuraRetornoCOTPROBDETALLE det = ws.cotizacionProveedorDetalle("",pk, "");
+		EstrucuraRetornoCOTPROBDETALLE det = ws.cotizacionProveedorDetalle(pk,"", "");
 		
 		if (det.isEXITO())
 			if (det.getDATOS_CONSULTA().length > 0)

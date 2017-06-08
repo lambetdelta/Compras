@@ -65,7 +65,7 @@
 			   									for (int i = 0; i < rubros.length; i++) { 
 			   										ModelRUBROS rubro =  rubros[i];	
 			   										selected=Utilidades.asignarCadenaPorCoincidencia(rubro.getCODIGO(), id_rubros ,"selected");%>
-			   										<option value="<%=rubro.getID() %>" <%=selected%>><%=rubro.getDETALLE() %></option>
+			   										<option value="'<%=rubro.getID() %>'" <%=selected%>><%=rubro.getDETALLE() %></option>
 			   								<%	}
 			   								}else{ %>
 			   									<option value="null">Sin rubros disponibles</option>
@@ -73,7 +73,7 @@
 			   								</select>  							
 			   						</div>    					
 									<div class="flex-width-2">
-										<label>Fecha de publicación:</label>
+										<label>Fecha de vigencia:</label>
 										<div class='input-group date' id='fecha-publicacion'>
 						                    <input type='text' class="form-control" autocomplete="off" readonly="readonly"/>
 						                    <span class="input-group-addon">

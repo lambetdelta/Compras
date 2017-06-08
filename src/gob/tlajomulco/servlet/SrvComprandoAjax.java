@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import gob.tlajomulco.ComprasDAO;
 import gob.tlajomulco.config.Constantes;
 import gob.tlajomulco.config.Estatus;
-
 import org.tempuri.CONCURSOSMODEL;
 import com.google.gson.Gson;
 /**
@@ -35,7 +34,7 @@ public class SrvComprandoAjax extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -45,7 +44,7 @@ public class SrvComprandoAjax extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		if(request.getParameter("idRubros")!= null && request.getParameter("fecha_publicacion")!= null){
+		if(request.getParameter("idRubros") != null && request.getParameter("fecha_publicacion") != null){
 			String rubros="";
 			String fecha_publicacion="";
 //			String fecha_vencimiento="";
@@ -57,15 +56,17 @@ public class SrvComprandoAjax extends HttpServlet {
 			fecha_publicacion=Utilidades.limpiar(request.getParameter("fecha_publicacion"));
 //			fecha_vencimiento=Utilidades.limpiar(request.getParameter("fecha_vencimiento"));
 			Estatus status = Constantes.getEstatus(Constantes.getURL(request));
-			for (int i = 0; i < id_rubros.length; i++) {
-				concursos=db.getConcurso(id_rubros[i], fecha_publicacion);
-				if(concursos != null)
-					if(concursos.length > 0){
-						concursos=Utilidades.prepararRespuestaAjax(concursos,status);
-						concursos_lista.add(concursos);
-					}
-			}
-			String respuesta=new Gson().toJson(concursos_lista);
+//			for (int i = 0; i < id_rubros.length; i++) {
+//				concursos=db.getConcurso(id_rubros[i], fecha_publicacion);
+//				if(concursos != null)
+//					if(concursos.length > 0){
+//						concursos=Utilidades.prepararRespuestaAjax(concursos,status);
+//						concursos_lista.add(concursos);
+//					}
+//			}
+			concursos=db.getConcurso(rubros, fecha_publicacion);
+			concursos=Utilidades.prepararRespuestaAjax(concursos,status);
+			String respuesta=new Gson().toJson(concursos);
 			response.getWriter().write(respuesta);
 		}
 	}

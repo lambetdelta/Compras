@@ -60,7 +60,6 @@
 	<div id="wrapper">
 		<!-- Menu -->
 		<jsp:include page="../menu.jsp"></jsp:include>
-	
 		<div class="container-fluid"> 
 			<!-- Cuerpo -->
 			<div class="row">
@@ -92,6 +91,7 @@
     	            				if (inv.getTERMINADO().equals("T"))
     	            					sts = "TERMINADO";
         	        		%>
+        	        				<input type="hidden" value="<%=inv.getLIST_ID() %>">
         	        				<tr id="<%=inv.getLIST_ID() %>">
         	        					<td class="text-center">
         	        						<a href="#" class="idcotiza" id="<%=inv.getLIST_ID() %>" cotId="<%=inv.getLIST_ID() %>" terminado="<%=inv.getTERMINADO() %>"><span id="ico_cotiza" class="ico_cotiza glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>

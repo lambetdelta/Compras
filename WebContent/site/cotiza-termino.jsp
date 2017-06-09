@@ -76,9 +76,9 @@
     				</div>   
     				
     				<div class="form-group">
-  						<label class="control-label col-md-4" for="garantia">Garantia:</label>
+  						<label class="control-label col-md-4" for="garantia">Garantia *:</label>
     					<div class="col-md-8">    							
-      						<textarea rows="3" cols="100%" class="form-control" id="garantia"><%=cot.getGARANTIA() %></textarea>      					
+      						<textarea rows="3" cols="100%" class="form-control" id="garantia" required="required"><%=cot.getGARANTIA() %></textarea>      					
     					</div>
     				</div>
     				<div class="form-group">
@@ -102,7 +102,8 @@
   								<label title="Al finalizar una cotización no será posible actualizar precios de sus partidas, ni la información de entrega">
   								<input type="checkbox" id="finalizar" name="finalizar">¿Desea finalizar esta cotización?</label>
       						</div>    
-      						<br /> -->  				
+      						<br /> -->  	
+      						<span>(*)Campos obligatorios</span>			
 	      					<div class="alert alert-info col-md-12" role="alert">
     	  						Al finalizar una cotización no será posible actualizar precios de sus partidas, ni la información de entrega
       						</div>
@@ -120,8 +121,8 @@
 		
 			<div class="modal-footer">						
 		<% if (cot.getTERMINADO().equals("F")) { %>			
-				<button id="btn-ok" type="submit" class="btn btn-default" form="cotiza-finaliza" value="true"><span class="glyphicon glyphicon-send" ></span> Finalizar</button>
-				<button id="btn-ok" type="submit" class="btn" form="cotiza-finaliza" value="false"><span class="glyphicon glyphicon-ok-sign" ></span> Guardar</button>
+				<button id="btn-ok" type="submit" class="btn btn-default" form="cotiza-finaliza" value="true"><span class="glyphicon glyphicon-send" ></span>Enviar</button>
+				<!-- <button id="btn-ok" type="submit" class="btn" form="cotiza-finaliza" value="false"><span class="glyphicon glyphicon-ok-sign" ></span> Guardar</button> -->
 		<% } %>
 				<button type="button" data-dismiss="modal" class="btn"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</button>
 			</div>

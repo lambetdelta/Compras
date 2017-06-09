@@ -42,21 +42,14 @@
 <link rel="stylesheet" type="text/css" href="iconFonts/material-icons.css">
 <link href="css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="css/compras.css">
-
-<script src="js/jquery-1.11.3.min.js"></script>
-
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/typeahead.min.js"></script>
-<script src="js/jquery-ready-cotiza.js"></script>     
-<script src="js/jquery-ready-menu.js"></script>   
-<script src="js/validator.js"></script>
-<script src="js/moment-with-locales.min.js"></script>
-<script src="js/bootstrap-datetimepicker.min.js"></script>
-<script src="js/jquery-barcode.min.js"></script>
+<link rel="stylesheet" href="css/popUpCargando.css">
 
 
 </head>
 <body>
+	<div id="fondo-emergente-cargando" class="fondo-emergente">
+		<img src="imagenes/preload.gif" >
+	</div>
 	<div id="wrapper">
 		<!-- Menu -->
 		<jsp:include page="../menu.jsp"></jsp:include>
@@ -196,4 +189,14 @@
 	<div class="modal fade" id="modal-msj" tabindex="0" role="dialog" aria-labelledby="" aria-hidden="true">
 	<div class="modal fade" id="modal-msj2" tabindex="0" role="dialog" aria-labelledby="" aria-hidden="true">
 </body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/Utilidades.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/typeahead.min.js"></script>
+<script src="js/jquery-ready-cotiza.js"></script>     
+<script src="js/jquery-ready-menu.js"></script>   
+<script src="js/validator.js"></script>
+<script src="js/moment-with-locales.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/jquery-barcode.min.js"></script>
 </html>

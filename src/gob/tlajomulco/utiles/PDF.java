@@ -4,8 +4,14 @@
 package gob.tlajomulco.utiles;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -60,14 +66,14 @@ public class PDF extends PDFDocument {
 	}
 	private Graphics2D  headerDateCotConDate(Graphics2D page){
 		this.newFont(page, "Times New Roman", 8,Font.PLAIN);
-		int post = (int)(this.width / 5) * 4;
+		int post = (int)(this.width / 6) * 5;
 		String fecha="Fecha:" + ManejadorFechas.getFechaActual("dd-MM-yyyy");
 		page.drawString(fecha, post, this.y + 4);
 		return page;
 	}
 	private Graphics2D  headerDateCotConHour(Graphics2D page){
 		this.newFont(page, "Times New Roman", 8,Font.PLAIN);
-		int post = (int)(this.width / 5) * 4;
+		int post = (int)(this.width / 6) * 5;
 		String hora="Hora:" + ManejadorFechas.getHoraActual("hh:mm:ss a");
 		page.drawString(hora, post, this.y + 15);
 		return page;
@@ -82,12 +88,68 @@ public class PDF extends PDFDocument {
 				"Agente de Ventas:", "RFC:", "Tel:", "Fax:", "Email:");
 		return page;
 	}
-	public Graphics2D drawDataBidding(Graphics2D page, int x, int y,String no_bidding,String target_bidding){
+	public Graphics2D drawDataBidding(Graphics2D page, int x, int y,String no_bidding,String target_bidding,
+			String request, String date,String observations, String date_limit, String payconditions){
 		x += this.marginText;
 		int y_original=y;
+		int x_separator = (int)(this.width / 5); 
 		page.drawString(no_bidding, x, y);
 		y += 10;
 		page.drawString(target_bidding, x, y);
+		y = y_original;
+		x += x_separator;
+		page.drawString(request, x, y);
+		y = y_original;
+		x += x_separator;
+		page.drawString(date, x, y);
+		page.drawString(observations, x, (y + 10));
+		y = y_original;
+		x += x_separator;
+		page.drawString(payconditions, x, y);
+		x += x_separator;
+		this.drawDateLimitBidding(page, x, y, date_limit);
+		return page;
+	}
+	private Graphics2D drawContainerDateLimitBidding(Graphics2D page, int x, int y){
+		Color color= new Color(222,222,222);
+		int width = (int)(this.width / 6);
+		this.drawRecWithFilligAndBorder(page, x, y, width, 25, color);
+		this.drawRecWithFilligAndBorder(page, x, (y + 25), width, 10, color);
+		return page;
+	}
+	private Graphics2D drawRecWithFilligAndBorder(Graphics2D page, int x,int y, int width, int heigth, Color color){
+		page.setColor(color);
+		page.fillRect(x, y, width, heigth);
+		page.setColor(Color.black);
+		page.drawRect(x, y, width, heigth);
+		return page;
+	}
+	private void drawImage(Graphics2D page, int x, int y, String path_){
+		String separador = System.getProperty("file.separator");
+		String path="C:" + separador+ "Users" + separador+ "Usuario" + separador
+				+ "workspace" + separador+ "Compras" + separador+ "WebContent" 
+				+ separador+ "documentos" + separador+ "WebProveedores" + separador 
+				+"tlj-logo.png";
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+		}
+		page.drawImage(img, 40, 40, null);
+	}
+	private Graphics2D drawDateLimitBidding(Graphics2D page, int x, int y, String date_limt){
+		y -= 10;
+		this.drawContainerDateLimitBidding(page, x, y);
+		y += 10;
+		x += this.marginText;
+		this.newFont(page, "Times New Roman", 6,Font.BOLD);
+		page.drawString("Fecha Limite de Entrega de", x, y);
+		page.drawString("la Cotización", x, (y + 10));
+		this.newFont(page, "Times New Roman", 6,Font.PLAIN);
+		page.drawString(date_limt, x, (y + 22));
+		return page;
+	}
+	public Graphics2D drawTableItems(Graphics2D page){
 		return page;
 	}
 	private Graphics2D drawDataGeneralProvider(Graphics2D page,int x, int y,String name, String legal_repr,

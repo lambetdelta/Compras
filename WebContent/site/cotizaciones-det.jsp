@@ -73,8 +73,9 @@
         	        										<td class="text-right" style="white-space: nowrap;"><%=Formatos.getFNumero(total) %></td>
         	        										        	        										
         	        										<td class="text-center">
-        	        											<a class="partida-link" href="#" title="Cotizar" data_partida="<%=d.getID_ITEM() %>" cotId="<%=cotId %>" terminado="<%=terminado %>">
-        	        												<span id="ico_cotiza" class="ico_cotiza glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>        	        				
+        	        											<div class="partida-link" href="" title="Cotizar" data_partida="<%=d.getID_ITEM() %>" cotId="<%=cotId %>" terminado="<%=terminado %>">
+        	        												<span id="ico_cotiza" class="ico_cotiza glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+       	        												</div>        	        				
         	        										</td>
         	        									</tr>
 <% 		} // Fin for %>

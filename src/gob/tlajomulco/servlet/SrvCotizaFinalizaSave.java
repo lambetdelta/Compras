@@ -67,31 +67,23 @@ public class SrvCotizaFinalizaSave extends HttpServlet {
 			cab.setGaratia(req.getParameter("garantia").toUpperCase());
 		if (req.getParameter("dias") != null)
 			cab.setDiasEntrega(Integer.parseInt(req.getParameter("dias")));
-		
 		System.out.println("Dias: " + cab.getDiasEntrega());
 		// Leemos datos de la sesion
 		HttpSession s = req.getSession(false);
 		ModelUsuario user = new ModelUsuario();
 		user = (ModelUsuario) s.getAttribute("user");
-		
 		cab.setUsuario(user.getUsuario());
-		
 		ComprasDAO db = new ComprasDAO();
 		EstrucuraRetornoUpdate upd = db.updateCotizacionCabecera(cab);
-		
 		// Verificamos si hay que finalizar la cotización
 		if (req.getParameter("finalizar") != null) {
-			
 			boolean finalizar =  Boolean.parseBoolean(req.getParameter("finalizar"));
-			
 			if (finalizar) {
 				//cab.setTerminado("T");
 				upd = db.updateCotizacionTerminado(cab);
 				upd.setMENSAJE("T");
 			}	
 		}
-		
-		
 		Gson gson = new Gson();
 		String json = gson.toJson(upd);
 		res.getWriter().write(json);

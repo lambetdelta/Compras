@@ -76,7 +76,7 @@
     				</div>   
     				
     				<div class="form-group">
-  						<label class="control-label col-md-4" for="garantia">Garantia *:</label>
+  						<label class="control-label col-md-4" for="garantia">Garantia <span style="font-weight: initial">*</span>:</label>
     					<div class="col-md-8">    							
       						<textarea rows="3" cols="100%" class="form-control" id="garantia" required="required"><%=cot.getGARANTIA() %></textarea>      					
     					</div>

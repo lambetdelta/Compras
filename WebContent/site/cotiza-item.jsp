@@ -23,16 +23,12 @@
 	
 	if (request.getAttribute("detalle") != null) {
 		d = (ModelCotizacionProveedorDETALLE) request.getAttribute("detalle");
-	
 		if (request.getAttribute("cotId") != null)
 			cotId = request.getAttribute("cotId").toString();
 		if (request.getAttribute("terminado") != null)
 			terminado = request.getAttribute("terminado").toString();
-		
-		
 		if (terminado.equals("T"))
 			attrDisable = "disabled=\"disabled\"";
-		
 		double cantidad = Double.parseDouble(d.getCANTIDAD());
 		double precio = Double.parseDouble(d.getPRECIO_UNITARIO());
 		iva = Double.parseDouble(d.getIVA());
@@ -47,19 +43,10 @@
 			total = subtotal + ivaP + ieps;
 		} else
 			iva = 16;
-		
 	}
-	
+	if(d.getID_ITEM() != null){
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cotiza Item</title>
-
-<link href="css/jquery.bdt.css" type="text/css" rel="stylesheet">
-
-<script src="js/jquery-ready-cotiza-item.js" type="text/javascript"></script>
-
-</head>
-<body>
+	<link href="css/jquery.bdt.css" type="text/css" rel="stylesheet">
 	<div class="modal-dialog" id="dialog-cotizaitem">
 		
 		<div class="modal-content">
@@ -155,6 +142,12 @@
 			<button type="button" data-dismiss="modal" class="btn"><span class="glyphicon glyphicon-remove-sign"></span> Cancelar</button>
 		</div>
 	</div>
+</div>
+<script src="js/jquery-ready-cotiza-item.js" type="text/javascript"></script>
+<% }else{ %>
+	<div id="no-item">
+		<div class="alert alert-info col-md-12" role="alert">
+			Sin Datos que mostrar.
+		</div>
 	</div>
-</body>
-</html>
+<% }%>

@@ -12,7 +12,7 @@
 							Coordinación de Administración e Innovación Gubernamental <br />
  							Centro Administrativo Tlajomulco<br />
 							Higuera No. 70 Col. Centro Tlajomulco de Zúñiga Jalisco<br>
-							T 32834400 Ext 4055, 4050<br>
+							T 32834400 Ext  4050<br>
 						</h6></p>
  					</div>
  				</div>

@@ -15,6 +15,7 @@ import org.tempuri.EstrucuraRetornoCONCURSOSMODEL_DETAIL;
 import org.tempuri.EstrucuraRetornoCOTPROB;
 import org.tempuri.EstrucuraRetornoCOTPROBDETALLE;
 import org.tempuri.EstrucuraRetornoLOGIN;
+import org.tempuri.EstrucuraRetornoPADRONPROV;
 import org.tempuri.EstrucuraRetornoRUBROS;
 import org.tempuri.EstrucuraRetornoUpdate;
 import org.tempuri.ModelCATFAMPROD;
@@ -22,6 +23,7 @@ import org.tempuri.ModelCATTIPOPAGO;
 import org.tempuri.ModelCatProveedores;
 import org.tempuri.ModelCotizacionProveedor;
 import org.tempuri.ModelCotizacionProveedorDETALLE;
+import org.tempuri.ModelPadronProveedores;
 import org.tempuri.ModelRUBROS;
 import org.tempuri.ProveedoresSoapProxy;
 
@@ -57,6 +59,14 @@ public class ComprasDAO {
 			return r.getDATOS_CONSULTA();
 		
 		return null;
+	}
+	
+	public ModelPadronProveedores[] getDatosProveedor(String usuario, String password) throws RemoteException{
+		ProveedoresSoapProxy query = new ProveedoresSoapProxy();	
+			EstrucuraRetornoPADRONPROV result = query.padronProveedores("","", "", "", "", "", usuario, password);
+			if(result.isEXITO())
+				return result.getDATOS_CONSULTA();
+			return null;
 	}
 	
 	/**
@@ -255,7 +265,7 @@ public class ComprasDAO {
 	public ModelCotizacionProveedorDETALLE getCotizacionProveedorDet(String pk, String item) throws RemoteException {
 		ProveedoresSoapProxy ws = new ProveedoresSoapProxy();
 		
-		EstrucuraRetornoCOTPROBDETALLE det = ws.cotizacionProveedorDetalle("",pk, item);
+		EstrucuraRetornoCOTPROBDETALLE det = ws.cotizacionProveedorDetalle("",item,"");
 		
 		if (det.isEXITO())
 			if (det.getDATOS_CONSULTA().length > 0)
@@ -281,7 +291,7 @@ public class ComprasDAO {
 		System.out.println("Compras :: Actualizando Elemento de Cotización: " + item.getIdItem()+ " precio: " + item.getPrecioItem());
 		return ws.updateItemCotizacion(item.getIdItem(), BigDecimal.valueOf(item.getPrecioItem()), item.getFechaEntregaItem(), item.getUsuario(),
 				 item.getIdCotizacion(), item.getObservaciones(),String.valueOf(item.getIvaPorcentaje()),BigDecimal.valueOf(item.getIvaPorcentaje()),
-				 BigDecimal.valueOf(item.getIvaIEPS()), item.getItemDetalle());	
+				 BigDecimal.valueOf(item.getIvaIEPS()),item.getItemDetalle());	
 	}
 	
 	/**

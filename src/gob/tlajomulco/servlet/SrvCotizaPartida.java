@@ -33,27 +33,14 @@ public class SrvCotizaPartida extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html; charset=UTF-8");
 		res.setCharacterEncoding("UTF-8");		
-		
 		System.out.println("Hola ingresando a esto... SrvCotizaPartida");
 		ModelCotizacionProveedorDETALLE d = new ModelCotizacionProveedorDETALLE();
-		
-		//String parametros = "1"; //req.getParameterNames().nextElement();
-		
 		String item = req.getParameter("item");
-		String cotId = req.getParameter("cod");
+		String cotId = req.getParameter("cot");
 		String terminado = req.getParameter("term");
-		
-		//System.out.println("Parámetros... " + parametros);
-		
 		if (item != null && !item.isEmpty()) {			
-			//String[] data = parametros.split("\\|");
-			//cotId = //data[0];
-			//item = s1//data[1];
-			//terminado = data[2];
-			
 			ComprasDAO ws = new ComprasDAO();
 			d = ws.getCotizacionProveedorDet(cotId, item);
-			
 			req.setAttribute("detalle", d);
 			req.setAttribute("cotId", cotId);			
 			req.setAttribute("terminado", terminado);

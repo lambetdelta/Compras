@@ -32,35 +32,27 @@ public class SrvCotizaFinalizaLoad extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest req, HttpServletResponse res)
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {	
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {	
 		res.setContentType("text/html; charset=UTF-8");
 		res.setCharacterEncoding("UTF-8");
-		
 		ModelCotizacionProveedor cot = new ModelCotizacionProveedor();
-		String data = req.getParameterNames().nextElement(); //FormatosQPS.convertToUTF8(req.getParameterNames().nextElement());
-		
-		//Gson gson = new Gson();
-		//cot = (ModelCotizacionProveedor) gson.fromJson(data, ModelCotizacionProveedor.class);
-		
+		String data = req.getParameter("id");
 		// Obtenemos los tipos de pago
 		ComprasDAO db = new ComprasDAO(); 
 		ModelCATTIPOPAGO[] tp = db.getCatalogoTipoPago();
-		
 		System.out.println("Tipo pago: " + tp);
 		HttpSession sesionOk = req.getSession(false);
 		if (sesionOk != null){		
 			if (sesionOk.getAttribute("user") != null) {
 				ModelUsuario user = (ModelUsuario) sesionOk.getAttribute("user");
 				cot = db.getCotizacionProveedor(data, user.getUsuario(), Base64Coder.decode(user.getPassword()));
-
 				System.out.println("Cotizacion: "+cot);
-				
 				req.setAttribute("cotizacion", cot);
 				req.setAttribute("tipoPago", tp);
 				req.getRequestDispatcher("site/cotiza-termino.jsp").forward(req, res);
 			}else
-				res.getWriter().write("dqwwqd");
+				req.getRequestDispatcher("inicio.jsp");
 		}else
-			res.getWriter().write("ddddd");
+			req.getRequestDispatcher("inicio.jsp");
 	}
 }

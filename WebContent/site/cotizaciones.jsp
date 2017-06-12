@@ -87,7 +87,9 @@
         	        				<input type="hidden" value="<%=inv.getLIST_ID() %>">
         	        				<tr id="<%=inv.getLIST_ID() %>">
         	        					<td class="text-center">
-        	        						<a href="#" class="idcotiza" id="<%=inv.getLIST_ID() %>" cotId="<%=inv.getLIST_ID() %>" terminado="<%=inv.getTERMINADO() %>"><span id="ico_cotiza" class="ico_cotiza glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+        	        						<div data-show="true" class="idcotiza" id="<%=inv.getLIST_ID() %>" cotId="<%=inv.getLIST_ID() %>" terminado="<%=inv.getTERMINADO() %>">
+        	        							<span id="ico_cotiza" class="ico_cotiza glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+        	        						</div>
         	        					</td>
             	    					<td class="text-center"><strong><%=inv.getNUM_CONCURSO() %></strong></td>
                 						<td class="text-center"><%=FormatosQPS.getFechaCorta(inv.getFECHAACTUAL()) %></td>	                					
@@ -148,7 +150,7 @@
         	        							</div>
         	        							<div class="col-lg-2 text-right" >
         	        								<!-- <a id="btn-print" href="PrintCotizacion.pdf?pk=<%=inv.getID() %>" class=" btn btn-default" target="_blank" title="Imprimir"><span class="glyphicon glyphicon-print"></span></a>  -->
-        	        								<a id="btn-print" cotNo="<%=inv.getNUMERO() %>" idCotizacion="<%=inv.getID() %>" class="adjuntos-frm btn btn-default" title="Adjuntar archivos"><span class="glyphicon glyphicon-paperclip"></span></a>
+        	        								<div id="btn-print" cotNo="<%=inv.getNUMERO() %>" idCotizacion="<%=inv.getID() %>" class="adjuntos-frm btn btn-default" title="Adjuntar archivos"><span class="glyphicon glyphicon-paperclip"></span></div>
         	        							</div>
         	        							<div class="col-lg-2 text-center">        	        							        	        					        	        							
         	        						<% 	Gson gson = new Gson();
@@ -157,7 +159,7 @@
         	        							
         	        							if (!terminado) {         	        								        	        							        	        							
         	        						%>
-        	        								<a id="btn-ok" data_item="<%=data.replace("\"", "\'") %>" class="finaliza-frm btn btn-default" ><span class="glyphicon glyphicon-log-out"></span> Finalizar</a>
+        	        								<div id="btn-ok" data_item="<%=data.replace("\"", "\'") %>" class="finaliza-frm btn btn-default" ><span class="glyphicon glyphicon-log-out"></span> Enviar</div>
         	        						<%} %>
         	        								
         	        							</div>
@@ -199,4 +201,9 @@
 <script src="js/moment-with-locales.min.js"></script>
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="js/jquery-barcode.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		Cotizaciones.init();
+	});
+</script>
 </html>

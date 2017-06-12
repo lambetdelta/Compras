@@ -57,10 +57,8 @@ public class SrvLogin extends HttpServlet {
 		else {
 			
 			try {
-			ComprasDAO db = new ComprasDAO();
-						
-			EstrucuraRetornoLOGIN l = db.login(usuario, password);
-			
+			ComprasDAO db = new ComprasDAO();						
+			EstrucuraRetornoLOGIN l = db.login(usuario, password);			
 			if (l.isEXITO()) {								
 				user.setId(l.getDATOS_CONSULTA().getID());				
 				user.setNombre(l.getDATOS_CONSULTA().getNOMBRE());

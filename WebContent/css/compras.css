@@ -10,9 +10,15 @@
     padding: 5px;
   }
 }
-
+div.partida-link,div.finaliza-frm,div.adjuntos-frm,div.idcotiza{
+	display: inline;
+	cursor:pointer;
+}
 body{
     font-family: AgoraSans;
+}
+.detalles{
+	display: none;
 }
 #menu{
     z-index: 99;
@@ -21,7 +27,16 @@ body{
     border-radius: 0px;
     background-color: #757575;
 }
-
+#no-item{
+	position:absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	width: 50%;
+	height: 52px;
+}
 .dropdown-toggle[aria-expanded="false"] {  
   color:white !important;
 }
